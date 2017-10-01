@@ -22,8 +22,8 @@ def requiredID():
 		response = opener.open(request)
 		result = json.loads(response.read())
 		return render_template('home.html', check_id=result['id'])
-	except urllib2.HTTPError, e:
-		return e.code;
+	except Exception, e:
+		return e;
 	
 
 if __name__ == "__main__":
