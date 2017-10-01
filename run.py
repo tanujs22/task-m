@@ -15,15 +15,15 @@ def requiredID():
 		'currency' : 'EUR',
 		'paymentType' : 'DB'
 	}
-	try:
-		opener = urllib2.build_opener(urllib2.HTTPHandler)
-		request = urllib2.Request(url, data=urllib.urlencode(data))
-		request.get_method = lambda: 'POST'
-		response = opener.open(request)
-		result = json.loads(response.read())
-		return render_template('home.html', check_id=result['id'])
-	except Exception, e:
-		return e;
+	# try:
+	opener = urllib2.build_opener(urllib2.HTTPHandler)
+	request = urllib2.Request(url, data=urllib.urlencode(data))
+	request.get_method = lambda: 'POST'
+	response = opener.open(request)
+	result = json.loads(response.read())
+	return render_template('home.html', check_id=result['id'])
+	# except urllib2.HTTPError, e:
+	# 	return e.code;
 	
 
 if __name__ == "__main__":
