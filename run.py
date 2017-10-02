@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask import request as rt
 from werkzeug.datastructures import CombinedMultiDict, MultiDict
 import urllib, urllib2, json
@@ -40,8 +40,9 @@ def requestform():
 		request = urllib2.Request(url, data='')
 		request.get_method = lambda: 'GET'
 		response = opener.open(request)
-		print response
-		return 'x'
+		res = jsonify(response.read())
+		print res
+		return res
 	except urllib2.HTTPError, e:
 		return e.code;
 
