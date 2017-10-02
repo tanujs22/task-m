@@ -31,7 +31,9 @@ def requiredID():
 def requestform():
 	parameters = CombinedMultiDict([rt.args, rt.form])
 	check_id = parameters['check_id']
-	url = "https://test.oppwa.com/v1/checkouts/%s/payment" % check_id
+	print 'reached'
+	print check_id
+	url = "https://test.oppwa.com/v1/checkouts/"+check_id+"/payment"
 	url += '?authentication.userId=8a8294174b7ecb28014b9699220015cc'
 	url += '&authentication.password=sy6KJsT8'
 	url += '&authentication.entityId=8a8294174b7ecb28014b9699220015ca'
