@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.7
 from flask import Flask, render_template, request
+from werkzeug.datastructures import CombinedMultiDict, MultiDict
 import urllib, urllib2, json
 app = Flask(__name__)
 
@@ -27,8 +28,8 @@ def requiredID():
 
 @app.route('/formresponse')
 def requestform():
-	check_id = request.form['check_id']
-	print check_id
+	parameters = CombinedMultiDict([request.args, request.form])
+	print parameters['check_id']
 	url = "https://test.oppwa.com/v1/checkouts/%s/payment" % check_id
 	url += '?authentication.userId=8a8294174b7ecb28014b9699220015cc'
 	url += '&authentication.password=sy6KJsT8'
