@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import urllib, urllib2, json
 app = Flask(__name__)
 
