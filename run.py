@@ -11,7 +11,7 @@ def requiredID():
 		'authentication.userId' : '8a8294174b7ecb28014b9699220015cc',
 		'authentication.password' : 'sy6KJsT8',
 		'authentication.entityId' : '8a8294174b7ecb28014b9699220015ca',
-		'amount' : '92.00',
+		'amount' : '11.97',
 		'currency' : 'EUR',
 		'paymentType' : 'DB'
 	}
@@ -24,6 +24,24 @@ def requiredID():
 		return render_template('home.html', check_id=result['id'])
 	except urllib2.HTTPError, e:
 		return e.code;
+
+@app.route('/formresponse', methods=['POST'])
+def request():
+	check_id = request.form['check_id']
+	print check_id
+	url = "https://test.oppwa.com/v1/checkouts/%s/payment" % check_id
+	url += '?authentication.userId=8a8294174b7ecb28014b9699220015cc'
+	url += '&authentication.password=sy6KJsT8'
+	url += '&authentication.entityId=8a8294174b7ecb28014b9699220015ca'
+	try:
+		opener = urllib2.build_opener(urllib2.HTTPHandler)
+		request = urllib2.Request(url, data='')
+		request.get_method = lambda: 'GET'
+		response = opener.open(request)
+		return json.loads(response.read())
+	except urllib2.HTTPError, e:
+		return e.code;
+
 	
 
 if __name__ == "__main__":
