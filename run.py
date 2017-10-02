@@ -25,7 +25,7 @@ def requiredID():
 	except urllib2.HTTPError, e:
 		return e.code;
 
-@app.route('/formresponse', methods=['POST'])
+@app.route('/formresponse')
 def request():
 	check_id = request.form['check_id']
 	print check_id
