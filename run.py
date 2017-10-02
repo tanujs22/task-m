@@ -27,7 +27,7 @@ def requiredID():
 	except urllib2.HTTPError, e:
 		return e.code;
 
-@app.route('/formresponse')
+@app.route('/formresponse',methods=['POST'])
 def requestform():
 	parameters = CombinedMultiDict([rt.args, rt.form])
 	check_id = parameters['check_id']
