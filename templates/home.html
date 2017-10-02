@@ -3,7 +3,7 @@
         <title>Payment Gateway</title>
     </head>
     <body>
-        <form action="{{ url_for('request', _scheme='https', _external=True) }}" class="paymentWidgets" data-brands="VISA MASTER PAYPAL ALIPAY">
+        <form action="{{ url_for('requestform', _scheme='https', _external=True) }}" class="paymentWidgets" data-brands="VISA MASTER PAYPAL ALIPAY">
         <input type='hidden' name='{{ check_id }}'>
         </form>
         <script src="https://code.jquery.com/jquery.js" type="text/javascript"></script>

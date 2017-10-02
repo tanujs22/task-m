@@ -26,7 +26,7 @@ def requiredID():
 		return e.code;
 
 @app.route('/formresponse')
-def request():
+def requestform():
 	check_id = request.form['check_id']
 	print check_id
 	url = "https://test.oppwa.com/v1/checkouts/%s/payment" % check_id
