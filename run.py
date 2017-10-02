@@ -30,7 +30,7 @@ def requiredID():
 @app.route('/formresponse')
 def requestform():
 	parameters = CombinedMultiDict([rt.args, rt.form])
-	print parameters['check_id']
+	check_id = parameters['check_id']
 	url = "https://test.oppwa.com/v1/checkouts/%s/payment" % check_id
 	url += '?authentication.userId=8a8294174b7ecb28014b9699220015cc'
 	url += '&authentication.password=sy6KJsT8'
