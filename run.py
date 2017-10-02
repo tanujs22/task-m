@@ -40,7 +40,7 @@ def requestform():
 		request = urllib2.Request(url, data='')
 		request.get_method = lambda: 'GET'
 		response = opener.open(request)
-		res = json.loads(response.read())
+		res = jsonify(response.read())
 		return res
 	except urllib2.HTTPError, e:
 		return e.code;
