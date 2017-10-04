@@ -11,8 +11,13 @@
         var wpwlOptions = {style:"card",
                             locale: "it",
                             showCVVHint: true,
-                            labels: {cardHolder: "Name on Credit Card"},
-                            errorMessages: {cardHolderError: "Enter a valid name", cardNumberError: "Enter a valid card number"}
+                            autofocus : 'card.number',
+                            labels: {cardHolder: "nome sulla carta"},
+                            errorMessages: {cardNumberError: "Inserisci un numero di carta valido"},
+                            onReady:function(){
+      $(".wpwl-group-expiry").after($(".wpwl-group-cardHolder"));
+      $(".wpwl-group-cvv").before($(".wpwl-group-expiry"));
+    }
                         };
         </script>
     </body>
